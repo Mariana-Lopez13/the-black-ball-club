@@ -64,16 +64,33 @@ h2{font:400 clamp(1.9rem,6vw,2.8rem)/1.1 var(--display);margin:0 0 .5rem}
 .contact a{font-size:1.25rem;font-weight:700}
 footer{padding:2rem 0;text-align:center;color:var(--muted);font-size:.95rem}
 @media (prefers-reduced-motion:reduce){.ball{animation:none}html{scroll-behavior:auto}}
+.topnav{position:sticky;top:0;z-index:20;background:rgba(12,9,8,.94);border-bottom:2px solid var(--red)}
+.topnav .wrap{display:flex;gap:.25rem;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+.topnav a{padding:.95rem .9rem;text-decoration:none;font-weight:700;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-2px}
+.topnav a:hover{color:var(--cream)}
+.topnav a[aria-current="page"]{color:var(--gold);border-bottom-color:var(--gold)}
+.view[hidden]{display:none}
+.view{min-height:70vh}
+.choices{display:grid;gap:1.25rem}@media (min-width:640px){.choices{grid-template-columns:1fr 1fr}}
+.choice{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.4rem;padding:2.5rem 1.25rem;background:var(--panel);border:2px solid var(--gold);border-radius:.8rem;text-decoration:none;transition:transform .15s,background .15s}
+.choice:hover,.choice:focus-visible{background:var(--red);transform:translateY(-3px)}
+.choice .ico{font-size:3rem;line-height:1}
+.choice b{font:400 1.8rem/1.1 var(--display);color:var(--gold)}.choice:hover b{color:#fff}
+.choice small{color:var(--muted);font-size:1rem}.choice:hover small{color:var(--cream)}
+.back{display:inline-block;font-weight:700;color:var(--gold);text-decoration:none;margin-bottom:1rem}.back:hover{text-decoration:underline}
+h3.sec{font:400 clamp(1.7rem,5vw,2.3rem)/1.1 var(--display);margin:0 0 .5rem}
 </style>
 </head>
 <body>
-<header class="hero"><div class="wrap">
-  <nav class="nav" aria-label="Principal"><a href="#musica">Foro Cultural</a><a href="#blackball">The Black Ball</a><a href="#menu">Menú</a><a href="#horarios">Horarios</a><a href="#contacto">Contacto</a></nav>
+<nav class="topnav" aria-label="Principal"><div class="wrap"><a href="#foro">Foro Cultural</a><a href="#black-ball">The Black Ball</a><a href="#menu">Menú</a><a href="#horarios">Horarios y contacto</a></div></nav>
+<main>
+<div class="view" id="v-foro">
+<div class="hero"><div class="wrap">
   <p class="sub">Puebla · Colonia Anzures</p>
   <h1>Foro Cultural de Anzures</h1>
   <p class="tag">Música en vivo, trova, noches bohemias y cultura. Un espacio íntimo para disfrutar el arte, con The Black Ball Club en la planta baja.</p>
-  <div class="btns"><a class="btn main" href="https://wa.me/522226014616">Reservar por WhatsApp</a><a class="btn" href="#musica">Ver programación</a></div>
-</div></header>
+  <div class="btns"><a class="btn main" href="https://wa.me/522226014616">Reservar por WhatsApp</a><a class="btn" href="#black-ball">Conocer The Black Ball</a></div>
+</div></div>
 
 <section id="musica"><div class="wrap">
   <h2>Foro Cultural: música en vivo</h2>
@@ -94,28 +111,45 @@ footer{padding:2rem 0;text-align:center;color:var(--muted);font-size:.95rem}
   </div>
 </div></section>
 
+</div>
+<div class="view" id="v-black-ball" hidden>
 <section id="blackball" style="background:radial-gradient(ellipse at 50% 0,#3a1512 0,var(--bg) 75%);text-align:center;padding:4rem 0 3rem"><div class="wrap">
   <div class="ball" style="animation:none" role="img" aria-label="Bola negra de billar"><span>8</span></div>
   <h2 style="font-size:clamp(2.2rem,8vw,4.2rem)">The Black Ball Club</h2>
   <p class="sub">Restaurante · Bar · Good food · Good music</p>
   <p class="tag">Buen ambiente, mejor sabor. Comida, bebidas y amigos.</p>
   <div class="status" id="status" role="status"><span class="dot"></span><span id="statusText">Revisando horario…</span></div>
-  <div class="btns"><a class="btn main" href="#menu">Ver menú</a><a class="btn" href="tel:+522226014616">Llamar 22 26 01 46 16</a></div>
+  <div class="btns"><a class="btn main" href="#menu">Ver menú</a><a class="btn" href="#horarios">Horarios y contacto</a><a class="btn" href="tel:+522226014616">Llamar 22 26 01 46 16</a></div>
 </div></section>
 
-<section id="menu" style="padding-top:0"><div class="wrap">
+</div>
+<div class="view" id="v-menu" hidden>
+<section id="menu"><div class="wrap">
   <h2>Menú</h2>
-  <p class="lead">Precios en pesos mexicanos.</p>
-  <div class="tabs" role="tablist" aria-label="Menú">
-    <button class="tab" role="tab" id="t-comida" aria-selected="true" aria-controls="p-comida">Comida</button>
-    <button class="tab" role="tab" id="t-bebida" aria-selected="false" aria-controls="p-bebida">Bebidas</button>
+  <div id="m-choose">
+    <p class="lead">¿Qué se te antoja? Elige una carta.</p>
+    <div class="choices">
+      <a class="choice" href="#menu-comida"><span class="ico" aria-hidden="true">🍔</span><b>Comida</b><small>Entradas, hamburguesas, alitas, postres y más</small></a>
+      <a class="choice" href="#menu-cocteleria"><span class="ico" aria-hidden="true">🍸</span><b>Coctelêria</b><small>Cocteles, cervezas y bebidas</small></a>
+    </div>
   </div>
-  <div class="panel" id="p-comida" role="tabpanel" aria-labelledby="t-comida"><div class="cols" id="comida"></div></div>
-  <div class="panel" id="p-bebida" role="tabpanel" aria-labelledby="t-bebida" hidden>
-    <div class="card"><h3>Bebidas</h3><p>Cerveza, cocteles, destilados y bebidas sin alcohol.</p><p class="note">Pregunta por la carta de bebidas y las promociones del día al 22 26 01 46 16. Venta de alcohol solo a mayores de 18 años. Consumo responsable.</p></div>
+  <div id="m-comida" hidden>
+    <a class="back" href="#menu">← Volver al menú</a>
+    <h3 class="sec">Comida</h3>
+    <p class="lead">Precios en pesos mexicanos.</p>
+    <div class="cols" id="comida"></div>
+    <a class="back" href="#menu-cocteleria">Ver coctelêria →</a>
+  </div>
+  <div id="m-cocteleria" hidden>
+    <a class="back" href="#menu">← Volver al menú</a>
+    <h3 class="sec">Coctelêria</h3>
+    <div class="card"><h3>Cocteles, cervezas y bebidas</h3><p>Cerveza, cocteles, destilados y bebidas sin alcohol.</p><p class="note">Pregunta por la carta de bebidas y las promociones del día al 22 26 01 46 16. Venta de alcohol solo a mayores de 18 años. Consumo responsable.</p></div>
+    <a class="back" href="#menu-comida" style="margin-top:1.5rem">Ver comida →</a>
   </div>
 </div></section>
 
+</div>
+<div class="view" id="v-horarios" hidden>
 <section class="info" id="horarios"><div class="wrap grid two">
   <div>
     <h2>Horarios</h2>
@@ -138,6 +172,8 @@ footer{padding:2rem 0;text-align:center;color:var(--muted);font-size:.95rem}
   </div>
 </div></section>
 
+</div>
+</main>
 <footer><div class="wrap">© 2026 Foro Cultural de Anzures · The Black Ball Club · Puebla, México</div></footer>
 
 <script>
@@ -182,6 +218,25 @@ tabs.forEach(function(t){t.addEventListener('click',function(){
   if(open)s.classList.add('open');
   var row=document.querySelector('#hours tr[data-d="'+(late?(wd+6)%7:wd)+'"]');
   if(row)row.classList.add('today');
+})();
+
+// Navegación por vistas: cada sección tiene su lugar, sin desplazarse hacia abajo
+(function(){
+  var main=['foro','black-ball','menu','horarios'], sub=['menu','menu-comida','menu-cocteleria'];
+  function show(id,on){document.getElementById(id).hidden=!on}
+  function route(){
+    var h=(location.hash||'#foro').slice(1);
+    var v=h.indexOf('menu')===0?'menu':h;
+    if(main.indexOf(v)<0){h='foro';v='foro'}
+    if(v==='menu'&&sub.indexOf(h)<0)h='menu';
+    main.forEach(function(x){show('v-'+x,x===v)});
+    if(v==='menu'){show('m-choose',h==='menu');show('m-comida',h==='menu-comida');show('m-cocteleria',h==='menu-cocteleria')}
+    document.querySelectorAll('.topnav a').forEach(function(a){
+      if(a.getAttribute('href')==='#'+v)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');
+    });
+    window.scrollTo(0,0);
+  }
+  window.addEventListener('hashchange',route);route();
 })();
 </script>
 </body>
