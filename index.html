@@ -1,90 +1,58 @@
 <!DOCTYPE html>
+<!-- Archivos de la página: index.html (contenido), styles.css (diseño), datos.js (menú y horario), script.js (funcionamiento) -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Foro Cultural de Anzures · The Black Ball Club · Puebla</title>
 <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#0c0908;--panel:#17100e;--red:#b3262d;--gold:#e0b252;--cream:#f3ead6;--muted:#b3a794;
---display:'Alfa Slab One','Rockwell',Georgia,serif;--body:'Karla','Helvetica Neue',Arial,sans-serif;
-color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c0908;--panel:#17100e;--cream:#f3ead6}}
-:root[data-theme="dark"]{--bg:#0c0908;--panel:#17100e;--cream:#f3ead6}
-html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
-*,*::before,*::after{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--cream);font:1.0625rem/1.6 var(--body)}
-a{color:inherit}:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
-.wrap{max-width:62rem;margin:0 auto;padding:0 1.25rem}
-.hero{background:radial-gradient(ellipse at 50% 20%,#3a1512 0,var(--bg) 70%);padding:2.5rem 0 4rem;text-align:center}
-.nav{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;font-weight:500;margin-bottom:2.5rem}
-.nav a{text-decoration:none;color:var(--muted)}.nav a:hover{color:var(--cream)}
-.ball{width:min(55vw,13rem);aspect-ratio:1;margin:0 auto 1.75rem;border-radius:50%;background:radial-gradient(circle at 32% 28%,#444 0,#050505 40%);box-shadow:0 1.5rem 2.5rem rgba(0,0,0,.7),0 0 0 3px var(--gold);display:grid;place-items:center;animation:roll 1.4s cubic-bezier(.2,.8,.2,1) both}
-.ball span{width:46%;aspect-ratio:1;border-radius:50%;background:var(--cream);color:#050505;display:grid;place-items:center;font:clamp(2.2rem,12vw,4.2rem)/1 var(--display)}
-@keyframes roll{from{transform:translateX(-60vw) rotate(-540deg);opacity:0}to{transform:none;opacity:1}}
-h1{font:400 clamp(2.4rem,9vw,5rem)/1 var(--display);margin:0 0 .75rem}
-.sub{color:var(--gold);font-weight:700;margin:0 0 .5rem}
-.tag{font-size:1.2rem;color:var(--muted);max-width:30rem;margin:0 auto 1.5rem}
-.status{display:inline-flex;align-items:center;gap:.6rem;border:1px solid var(--gold);border-radius:2rem;padding:.45rem 1.1rem;font-weight:500}
-.dot{width:.7rem;height:.7rem;border-radius:50%;background:#777}.status.open .dot{background:#5fd07f}
-.btns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-top:1.75rem}
-.btn{display:inline-block;padding:.8rem 1.6rem;border-radius:.4rem;font-weight:700;text-decoration:none;border:2px solid var(--gold)}
-.btn.main{background:var(--red);border-color:var(--red);color:#fff}
-.btn:hover{filter:brightness(1.15)}
-section{padding:4rem 0}
-h2{font:400 clamp(1.9rem,6vw,2.8rem)/1.1 var(--display);margin:0 0 .5rem}
-.lead{color:var(--muted);margin:0 0 2rem;max-width:36rem}
-.grid{display:grid;gap:1.25rem}
-@media (min-width:760px){.grid.two{grid-template-columns:1fr 1fr}}
-.card{background:var(--panel);border:1px solid rgba(224,178,82,.35);border-radius:.6rem;padding:1.5rem}
-.card.hot{border-color:var(--red)}
-.card h3{font:400 1.4rem/1.2 var(--display);color:var(--gold);margin:0 0 .6rem}
-.card p{margin:0 0 .6rem}
-.live{width:100%;border-collapse:collapse}
-.live td{padding:.7rem 0;border-bottom:1px solid rgba(243,234,214,.15);vertical-align:top}
-.live td:first-child{font-weight:700;padding-right:1rem;white-space:nowrap}
-.live small{display:block;color:var(--muted)}
-.tabs{display:flex;gap:.5rem;margin-bottom:2rem}
-.tab{font:inherit;font-weight:700;background:none;color:var(--cream);border:2px solid var(--gold);border-radius:.4rem;padding:.6rem 1.4rem;cursor:pointer}
-.tab[aria-selected="true"]{background:var(--gold);color:#050505}
-.panel[hidden]{display:none}
-.cols{display:grid;gap:0 3rem}@media (min-width:760px){.cols{grid-template-columns:1fr 1fr}}
-.cat{margin-bottom:2.25rem}
-.cat h3{font:400 1.5rem/1.2 var(--display);color:#fff;background:var(--red);display:inline-block;padding:.2rem .8rem;margin:0 0 .6rem;border-radius:.2rem}
-.item{display:flex;gap:1rem;align-items:baseline;padding:.45rem 0;border-bottom:1px dotted rgba(243,234,214,.18)}
-.item div{flex:1}.item small{display:block;color:var(--muted);font-size:.93rem;line-height:1.4}
-.price{font-weight:700;color:var(--gold);white-space:nowrap}
-.note{color:var(--muted);font-size:.95rem}
-.info{background:var(--panel)}
-.hours{width:100%;border-collapse:collapse}
-.hours td{padding:.55rem 0;border-bottom:1px solid rgba(243,234,214,.18)}
-.hours td:last-child{text-align:right;font-weight:700}
-.hours tr.closed td{color:var(--muted);font-weight:400}.hours tr.today td{color:var(--gold)}
-.contact p{margin:0 0 1.1rem}.contact span{display:block;color:var(--muted);font-size:.95rem}
-.contact a{font-size:1.25rem;font-weight:700}
-footer{padding:2rem 0;text-align:center;color:var(--muted);font-size:.95rem}
-@media (prefers-reduced-motion:reduce){.ball{animation:none}html{scroll-behavior:auto}}
-.topnav{position:sticky;top:0;z-index:20;background:rgba(12,9,8,.94);border-bottom:2px solid var(--red)}
-.topnav .wrap{display:flex;gap:.25rem;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
-.topnav a{padding:.95rem .9rem;text-decoration:none;font-weight:700;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-2px}
-.topnav a:hover{color:var(--cream)}
-.topnav a[aria-current="page"]{color:var(--gold);border-bottom-color:var(--gold)}
-.view[hidden]{display:none}
-.view{min-height:70vh}
-.choices{display:grid;gap:1.25rem}@media (min-width:640px){.choices{grid-template-columns:1fr 1fr}}
-.choice{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.4rem;padding:2.5rem 1.25rem;background:var(--panel);border:2px solid var(--gold);border-radius:.8rem;text-decoration:none;transition:transform .15s,background .15s}
-.choice:hover,.choice:focus-visible{background:var(--red);transform:translateY(-3px)}
-.choice .ico{font-size:3rem;line-height:1}
-.choice b{font:400 1.8rem/1.1 var(--display);color:var(--gold)}.choice:hover b{color:#fff}
-.choice small{color:var(--muted);font-size:1rem}.choice:hover small{color:var(--cream)}
-.back{display:inline-block;font-weight:700;color:var(--gold);text-decoration:none;margin-bottom:1rem}.back:hover{text-decoration:underline}
-h3.sec{font:400 clamp(1.7rem,5vw,2.3rem)/1.1 var(--display);margin:0 0 .5rem}
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<nav class="topnav" aria-label="Principal"><div class="wrap"><a href="#foro">Foro Cultural</a><a href="#black-ball">The Black Ball</a><a href="#menu">Menú</a><a href="#horarios">Horarios y contacto</a></div></nav>
+<nav class="topnav" aria-label="Principal"><div class="wrap"><a href="#black-ball" data-i="n_bb">The Black Ball</a><a href="#menu" data-i="n_menu">Menú</a><a href="#foro" data-i="n_foro">Foro Cultural</a><a href="#resenas" data-i="n_res">Reseñas</a><a href="#horarios" data-i="n_hor">Horarios y contacto</a><a href="#pedido" id="cartlink" hidden>🛒 <span id="cartn">0</span></a><select id="lang" aria-label="Idioma / Language / 语言"></select></div></nav>
 <main>
-<div class="view" id="v-foro">
+<div class="view" id="v-black-ball">
+<section id="blackball" style="background:radial-gradient(ellipse at 50% 0,#3a1512 0,var(--bg) 75%);text-align:center;padding:3.5rem 0 2rem"><div class="wrap">
+  <div class="ball" style="animation:none" role="img" aria-label="Bola negra de billar"><span>8</span></div>
+  <h1>The Black Ball Club</h1>
+  <p class="sub">Restaurant · Bar · Good food · Good music</p>
+  <p class="tag" data-i="t_tag">Buen ambiente, mejor sabor. Comida, bebidas y amigos.</p>
+  <div class="status" id="status" role="status"><span class="dot"></span><span id="statusText">…</span></div>
+  <div class="btns"><a class="btn main" href="#menu" data-i="b_menu">Ver menú</a><a class="btn" href="https://wa.me/522226014616" data-i="b_res">Reservar por WhatsApp</a><a class="btn" href="#horarios" data-i="b_hor">Horarios y contacto</a></div>
+</div></section>
+<section style="padding-top:1rem"><div class="wrap">
+  <h2 data-i="m_title">Cómo llegar</h2>
+  <p class="lead" data-i="m_text">Encuéntranos en Puebla. Toca el mapa para abrir Google Maps.</p>
+  <a class="mapcard js-maps" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 400 200" role="img" aria-label="Mapa"><rect width="400" height="200" fill="#1b1412"/><path d="M0 60H400M0 140H400M90 0V200M250 0V200M0 190L400 20" stroke="#3a2a25" stroke-width="10" fill="none"/><path d="M0 100H400M170 0V200" stroke="#4a362f" stroke-width="5" fill="none"/><circle cx="210" cy="95" r="30" fill="#b3262d" opacity=".25"/><path d="M210 125c-18-26-26-38-26-52a26 26 0 0 1 52 0c0 14-8 26-26 52z" fill="#b3262d" stroke="#e0b252" stroke-width="3"/><circle cx="210" cy="73" r="9" fill="#f3ead6"/></svg><span class="mapbtn" data-i="m_btn">Abrir en Google Maps</span></a>
+</div></section>
+</div>
+<div class="view" id="v-menu" hidden>
+<section id="menu"><div class="wrap">
+  <h2 data-i="n_menu">Menú</h2>
+  <div id="m-choose">
+    <p class="lead" data-i="q_choose">¿Qué se te antoja? Elige una carta.</p>
+    <div class="choices">
+      <a class="choice" href="#menu-comida"><span class="ico" aria-hidden="true">🍔</span><b data-i="c_food">Comida</b><small data-i="c_food_s">Entradas, hamburguesas, alitas, postres y más</small></a>
+      <a class="choice" href="#menu-cocteleria"><span class="ico" aria-hidden="true">🍸</span><b data-i="c_drink">Coctelería</b><small data-i="c_drink_s">Cocteles, cervezas y bebidas</small></a>
+    </div>
+  </div>
+  <div id="m-comida" hidden>
+    <a class="back" href="#menu" data-i="k_back">← Volver al menú</a>
+    <h3 class="sec" data-i="c_food">Comida</h3>
+    <p class="lead" data-i="p_note">Precios en pesos mexicanos.</p>
+    <div class="cols" id="comida"></div>
+    <a class="back" href="#menu-cocteleria" data-i="k_seedrink">Ver coctelería →</a>
+  </div>
+  <div id="m-cocteleria" hidden>
+    <a class="back" href="#menu" data-i="k_back">← Volver al menú</a>
+    <h3 class="sec" data-i="c_drink">Coctelería</h3>
+    <div class="cols" id="cocteleria"></div>
+    <div class="card" id="coct-aviso"><h3 data-i="c_drink_s">Cocteles, cervezas y bebidas</h3><p data-i="a_p">Cerveza, cocteles, destilados y bebidas sin alcohol.</p><p class="note" data-i="a_n">Pregunta por la carta de bebidas y las promociones del día al 22 26 01 46 16. Venta de alcohol solo a mayores de 18 años. Consumo responsable.</p></div>
+    <a class="back" href="#menu-comida" style="margin-top:1.5rem" data-i="k_seefood">Ver comida →</a>
+  </div>
+</div></section>
+</div>
+<div class="view" id="v-foro" hidden>
 <div class="hero"><div class="wrap">
   <p class="sub">Puebla · Colonia Anzures</p>
   <h1>Foro Cultural de Anzures</h1>
@@ -112,132 +80,58 @@ h3.sec{font:400 clamp(1.7rem,5vw,2.3rem)/1.1 var(--display);margin:0 0 .5rem}
 </div></section>
 
 </div>
-<div class="view" id="v-black-ball" hidden>
-<section id="blackball" style="background:radial-gradient(ellipse at 50% 0,#3a1512 0,var(--bg) 75%);text-align:center;padding:4rem 0 3rem"><div class="wrap">
-  <div class="ball" style="animation:none" role="img" aria-label="Bola negra de billar"><span>8</span></div>
-  <h2 style="font-size:clamp(2.2rem,8vw,4.2rem)">The Black Ball Club</h2>
-  <p class="sub">Restaurante · Bar · Good food · Good music</p>
-  <p class="tag">Buen ambiente, mejor sabor. Comida, bebidas y amigos.</p>
-  <div class="status" id="status" role="status"><span class="dot"></span><span id="statusText">Revisando horario…</span></div>
-  <div class="btns"><a class="btn main" href="#menu">Ver menú</a><a class="btn" href="#horarios">Horarios y contacto</a><a class="btn" href="tel:+522226014616">Llamar 22 26 01 46 16</a></div>
+<div class="view" id="v-resenas" hidden>
+<section><div class="wrap">
+  <h2 data-i="r_title">Reseñas</h2>
+  <p class="lead" data-i="r_lead">Lo que dicen nuestros clientes.</p>
+  <div class="grid two" id="r-list"></div>
+  <p class="lead" id="r-empty" data-i="r_empty">Todavía no hay reseñas publicadas. ¡Sé el primero en opinar!</p>
+  <div class="btns" style="justify-content:flex-start"><a class="btn main" id="r-google" href="#" target="_blank" rel="noopener" hidden data-i="r_btn">Dejar mi reseña en Google</a><a class="btn" id="r-wa" href="#" target="_blank" rel="noopener" data-i="r_wa">Opinar por WhatsApp</a></div>
 </div></section>
-
-</div>
-<div class="view" id="v-menu" hidden>
-<section id="menu"><div class="wrap">
-  <h2>Menú</h2>
-  <div id="m-choose">
-    <p class="lead">¿Qué se te antoja? Elige una carta.</p>
-    <div class="choices">
-      <a class="choice" href="#menu-comida"><span class="ico" aria-hidden="true">🍔</span><b>Comida</b><small>Entradas, hamburguesas, alitas, postres y más</small></a>
-      <a class="choice" href="#menu-cocteleria"><span class="ico" aria-hidden="true">🍸</span><b>Coctelêria</b><small>Cocteles, cervezas y bebidas</small></a>
-    </div>
-  </div>
-  <div id="m-comida" hidden>
-    <a class="back" href="#menu">← Volver al menú</a>
-    <h3 class="sec">Comida</h3>
-    <p class="lead">Precios en pesos mexicanos.</p>
-    <div class="cols" id="comida"></div>
-    <a class="back" href="#menu-cocteleria">Ver coctelêria →</a>
-  </div>
-  <div id="m-cocteleria" hidden>
-    <a class="back" href="#menu">← Volver al menú</a>
-    <h3 class="sec">Coctelêria</h3>
-    <div class="card"><h3>Cocteles, cervezas y bebidas</h3><p>Cerveza, cocteles, destilados y bebidas sin alcohol.</p><p class="note">Pregunta por la carta de bebidas y las promociones del día al 22 26 01 46 16. Venta de alcohol solo a mayores de 18 años. Consumo responsable.</p></div>
-    <a class="back" href="#menu-comida" style="margin-top:1.5rem">Ver comida →</a>
-  </div>
-</div></section>
-
 </div>
 <div class="view" id="v-horarios" hidden>
 <section class="info" id="horarios"><div class="wrap grid two">
   <div>
-    <h2>Horarios</h2>
-    <p class="lead">Abrimos de martes a sábado, de 11 pm a 3 am.</p>
+    <h2 data-i="h_title">Horarios</h2>
+    <p class="lead" data-i="h_lead">Abrimos de martes a sábado, de 11 pm a 3 am.</p>
     <table class="hours" id="hours">
-      <tr data-d="1" class="closed"><td>Lunes</td><td>Cerrado</td></tr>
-      <tr data-d="2"><td>Martes</td><td>11:00 pm – 3:00 am</td></tr>
-      <tr data-d="3"><td>Miércoles</td><td>11:00 pm – 3:00 am</td></tr>
-      <tr data-d="4"><td>Jueves</td><td>11:00 pm – 3:00 am</td></tr>
-      <tr data-d="5"><td>Viernes</td><td>11:00 pm – 3:00 am</td></tr>
-      <tr data-d="6"><td>Sábado</td><td>11:00 pm – 3:00 am</td></tr>
-      <tr data-d="0" class="closed"><td>Domingo</td><td>Cerrado</td></tr>
-    </table>
+      <tr data-d="1" class="closed"><td data-i="d1">Lunes</td><td data-i="closed">Cerrado</td></tr>
+      <tr data-d="2"><td data-i="d2">Martes</td><td>11:00 pm – 3:00 am</td></tr>
+      <tr data-d="3"><td data-i="d3">Miércoles</td><td>11:00 pm – 3:00 am</td></tr>
+      <tr data-d="4"><td data-i="d4">Jueves</td><td>11:00 pm – 3:00 am</td></tr>
+      <tr data-d="5"><td data-i="d5">Viernes</td><td>11:00 pm – 3:00 am</td></tr>
+      <tr data-d="6"><td data-i="d6">Sábado</td><td>11:00 pm – 3:00 am</td></tr>
+      <tr data-d="0" class="closed"><td data-i="d0">Domingo</td><td data-i="closed">Cerrado</td></tr>
+      </table>
   </div>
   <div class="contact" id="contacto">
-    <h2>Contacto</h2>
-    <p class="lead">Reserva tu mesa, tu cumpleaños o tu evento.</p>
-    <p><span>Teléfono y WhatsApp</span><a href="tel:+522226014616">22 26 01 46 16</a></p>
-    <p><span>Dirección</span>Col. Anzures, Puebla, Puebla, México</p>
+    <h2 data-i="ct_title">Contacto</h2>
+    <p class="lead" data-i="ct_lead">Reserva tu mesa, tu cumpleaños o tu evento.</p>
+    <p><span data-i="ct_phone">Teléfono y WhatsApp</span><a href="tel:+522226014616">22 26 01 46 16</a></p>
+    <p><span data-i="ct_addr">Dirección</span>Col. Anzures, Puebla, Puebla, México</p>
+    <a class="btn main js-maps" href="#" target="_blank" rel="noopener" data-i="m_btn">Abrir en Google Maps</a>
   </div>
 </div></section>
-
+</div>
+<div class="view" id="v-pedido" hidden>
+<section><div class="wrap">
+  <h2 data-i="o_title">Tu pedido</h2>
+  <div id="cart-list"></div>
+  <p class="lead" id="cart-empty" data-i="o_empty">Aún no has agregado nada. Ve al menú y toca +.</p>
+  <div id="cart-form" hidden>
+    <p class="total"><span data-i="o_total">Total</span>: <b id="cart-total">$0</b></p>
+    <input id="cname" type="text" maxlength="40" data-ph="o_name" placeholder="Tu nombre o número de mesa" aria-label="Nombre o mesa">
+    <div class="btns" style="justify-content:flex-start"><button class="btn main" id="cart-send" type="button" data-i="o_send">Enviar pedido por WhatsApp</button></div>
+    <p class="note" data-i="o_note">El pedido se envía al restaurante por WhatsApp; el pago se hace en el lugar.</p>
+  </div>
+  <a class="back" href="#menu" data-i="o_more">Seguir pidiendo</a>
+</div></section>
 </div>
 </main>
 <footer><div class="wrap">© 2026 Foro Cultural de Anzures · The Black Ball Club · Puebla, México</div></footer>
 
-<script>
-var M=[
-["Entradas",[["Aceitunas preparadas 50 gr","",60],["Champiñones en salmuera 50 gr","",60],["Chalupas (6)","",60],["Plato deli 250 gr","Jamón holandés, jamón serrano, salami, chorizo, queso manchego y queso Philadelphia",350],["Platón español","Jamón serrano y queso manchego 150 gr, platillo preparado",250],["Sincronizadas (3)","Jamón y queso",80],["Salchichas preparadas","BBQ, chipotle, mango, habanero, mostaza o miel",80],["Ensalada de la casa","Lechuga, zanahoria, jitomate y pepino. Agrega 50 gr de arrachera o atún por $50",70]]],
-["Hamburguesas",[["Tradicional 100 gr","Carne, lechuga y queso amarillo",110],["Doble carne 200 gr","Carne, lechuga y queso amarillo",140],["Hawaiana 100 gr","Carne, piña, lechuga y queso amarillo",120],["Champiñones y queso 100 gr","",120],["BBQ 100 gr","",110]]],
-["Emparedados",[["3 cerditos 120 gr","Embutidos, lechuga, queso amarillo, salchicha, jamón y tocino",100],["Jamón serrano 60 gr y manchego 50 gr","",100],["Arrachera 120 gr y queso manchego","",125],["Cochinita pibil 120 gr","Con frijolitos y cebolla morada",100]]],
-["Snack",[["Papas a la francesa 250 gr","Agrega queso o chorizo por $30",100],["Nachos 250 gr","Agrega chorizo, arrachera o esquites por $30",80],["Boneless 500 gr","",280],["Nuggets 10 pzas","",100],["Platón botanero","Boneless, nachos y papas a la francesa 400 gr",180],["Platón mixto","Boneless 400 gr y papas a la francesa 100 gr",280]]],
-["Alitas",[["10 piezas","BBQ, habanero mango, chipotle, mostaza miel, atómica o búfalo",130],["20 piezas","Mismos sabores",220]]],
-["Otros",[["Tacos de arrachera 200 gr","En 3 tortillas",125],["Gringa de arrachera","",125],["Crepa de jamón y Philadelphia","",100],["Platón ranchero 1 kg","Chorizo, chistorra, salchicha, aguja de cerdo y frijolitos",700]]],
-["Hot dogs",[["2 sencillos (promoción)","Salchicha Frankfurt 50 gr",75],["Hawaiano","Salchicha 50 gr y piña",80],["Queso amarillo y tocino","",80],["Champiñones y queso","",80]]],
-["Botanas",[["Cacahuates","",35],["Chicharrines","",35],["Papas Saratoga","",35],["Esquites","",50],["Churritos","",35],["Palomitas","",35],["Mega botana","De todo para compartir",200]]],
-["Postres",[["Afogato","Café espresso y helado",50],["Rosca de chocolate","",40],["Flan","",50],["Crepa de cajeta o lechera","",95],["Canoli","",50]]]
-];
-var cols=[document.createElement('div'),document.createElement('div')];
-M.forEach(function(c,i){
-  var d=document.createElement('div');d.className='cat';
-  var h=document.createElement('h3');h.textContent=c[0];d.appendChild(h);
-  c[1].forEach(function(it){
-    var r=document.createElement('div');r.className='item';
-    var t=document.createElement('div');var b=document.createElement('b');b.textContent=it[0];t.appendChild(b);
-    if(it[1]){var s=document.createElement('small');s.textContent=it[1];t.appendChild(s)}
-    var p=document.createElement('span');p.className='price';p.textContent='$'+it[2];
-    r.appendChild(t);r.appendChild(p);d.appendChild(r);
-  });
-  cols[i%2].appendChild(d);
-});
-var host=document.getElementById('comida');cols.forEach(function(c){host.appendChild(c)});
-
-var tabs=document.querySelectorAll('.tab');
-tabs.forEach(function(t){t.addEventListener('click',function(){
-  tabs.forEach(function(o){var on=o===t;o.setAttribute('aria-selected',on);document.getElementById(o.getAttribute('aria-controls')).hidden=!on});
-});});
-
-(function(){
-  var f=new Intl.DateTimeFormat('en-US',{timeZone:'America/Mexico_City',weekday:'short',hour:'numeric',hour12:false}).formatToParts(new Date());
-  var wd={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[f.find(function(p){return p.type==='weekday'}).value];
-  var h=parseInt(f.find(function(p){return p.type==='hour'}).value,10)%24;
-  var night=wd>=2&&wd<=6&&h>=23, late=[3,4,5,6,0].indexOf(wd)!==-1&&h<3, open=night||late;
-  var s=document.getElementById('status');
-  document.getElementById('statusText').textContent=open?'Abierto ahora · cerramos a las 3:00 am':'Cerrado ahora · abrimos de martes a sábado a las 11:00 pm';
-  if(open)s.classList.add('open');
-  var row=document.querySelector('#hours tr[data-d="'+(late?(wd+6)%7:wd)+'"]');
-  if(row)row.classList.add('today');
-})();
-
-// Navegación por vistas: cada sección tiene su lugar, sin desplazarse hacia abajo
-(function(){
-  var main=['foro','black-ball','menu','horarios'], sub=['menu','menu-comida','menu-cocteleria'];
-  function show(id,on){document.getElementById(id).hidden=!on}
-  function route(){
-    var h=(location.hash||'#foro').slice(1);
-    var v=h.indexOf('menu')===0?'menu':h;
-    if(main.indexOf(v)<0){h='foro';v='foro'}
-    if(v==='menu'&&sub.indexOf(h)<0)h='menu';
-    main.forEach(function(x){show('v-'+x,x===v)});
-    if(v==='menu'){show('m-choose',h==='menu');show('m-comida',h==='menu-comida');show('m-cocteleria',h==='menu-cocteleria')}
-    document.querySelectorAll('.topnav a').forEach(function(a){
-      if(a.getAttribute('href')==='#'+v)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');
-    });
-    window.scrollTo(0,0);
-  }
-  window.addEventListener('hashchange',route);route();
-})();
-</script>
+<script src="datos.js"></script>
+<script src="idiomas.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
