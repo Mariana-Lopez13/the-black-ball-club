@@ -28,7 +28,12 @@ var MENU_COMIDA=[
 // ];
 var MENU_BEBIDAS=[
 ["Cocteles",[["Verano Gin","Trozos de fresa, Moras, Agua quina y mineral, Ginebra o Vodka (500 ml)",145],["Margarita", "Natural, Tamarindo, Frutos rojos, Maracuya con tequila (350 ml)",145],["Carajillo","Licor 43 y Cafe expresso (250 ml)",145],["Mezcalina","Sabores de tamarindo, Frutos rojos, pepino, maracuya con mezcal (350 ml)",145],["Gin & Tnic","Ginebra, Pepino y agua tonica (350 ml)",145],["Baby Mango","Chamoy y Smirnoff de tamarindo, juego de mango (350 ml)",145],["Mojito","Ron, Azucar, Hierbabuena, mineral y jugo de limon (350 ml)",145],["The Black","Tequila, Ron, Vodka, menta verde y refresco de toronja",145]]],
-["Cocteles",[["Conga","Jugo de Piña, Jugo de Naranja, Granadina y Ron",110],["Piña Colada","Jugo de Piña, Crema de leche, crema de coco y Ron", 110],["Crepa de cajeta o lechera","",95],["Canoli","",50]]]
+["Cocteles",[["Conga","Jugo de Piña, Jugo de Naranja, Granadina y Ron",110],["Piña Colada","Jugo de Piña, Crema de leche, crema de coco y Ron", 110],["Snack",[["Papas a la francesa 250 gr","Agrega queso o chorizo por $30",100],["Nachos 250 gr","Agrega chorizo, arrachera o esquites por $30",80],["Boneless 500 gr","",280],["Nuggets 10 pzas","",100],["Platón botanero","Boneless, nachos y papas a la francesa 400 gr",180],["Platón mixto","Boneless 400 gr y papas a la francesa 100 gr",280]]],
+["Alitas",[["10 piezas","BBQ, habanero mango, chipotle, mostaza miel, atómica o búfalo",130],["20 piezas","Mismos sabores",220]]],
+["Otros",[["Tacos de arrachera 200 gr","En 3 tortillas",125],["Gringa de arrachera","",125],["Crepa de jamón y Philadelphia","",100],["Platón ranchero 1 kg","Chorizo, chistorra, salchicha, aguja de cerdo y frijolitos",700]]],
+["Hot dogs",[["2 sencillos (promoción)","Salchicha Frankfurt 50 gr",75],["Hawaiano","Salchicha 50 gr y piña",80],["Queso amarillo y tocino","",80],["Champiñones y queso","",80]]],
+["Botanas",[["Cacahuates","",35],["Chicharrines","",35],["Papas Saratoga","",35],["Esquites","",50],["Churritos","",35],["Palomitas","",35],["Mega botana","De todo para compartir",200]]],
+["Postres",[["Afogato","Café espresso y helado",50],["Rosca de chocolate","",40],["Flan","",50],["Crepa de cajeta o lechera","",95],["Canoli","",50]]]
 ];
 
 // HORARIO (para el aviso de "Abierto ahora")
