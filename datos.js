@@ -26,7 +26,10 @@ var MENU_COMIDA=[
 //   ["Cervezas",[["Corona","",45],["Michelada","Clásica o preparada",70]]],
 //   ["Cocteles",[["Margarita","Clásica o de sabor",110]]]
 // ];
-var MENU_COCTELERIA=[];
+var MENU_BEBIDAS=[
+["Cocteles",[["Verano Gin","Trozos de fresa, Moras, Agua quina y mineral, Ginebra o Vodka (500 ml)",145],["Margarita", "Natural, Tamarindo, Frutos rojos, Maracuya con tequila (350 ml)",145],["Carajillo","Licor 43 y Cafe expresso (250 ml)",145],["Mezcalina","Sabores de tamarindo, Frutos rojos, pepino, maracuya con mezcal (350 ml)",145],["Gin & Tnic","Ginebra, Pepino y agua tonica (350 ml)",145],["Baby Mango","Chamoy y Smirnoff de tamarindo, juego de mango (350 ml)",145],["Mojito","Ron, Azucar, Hierbabuena, mineral y jugo de limon (350 ml)",145],["The Black","Tequila, Ron, Vodka, menta verde y refresco de toronja",145]]],
+["Cocteles",[["Conga","Jugo de Piña, Jugo de Naranja, Granadina y Ron",110],["Piña Colada","Jugo de Piña, Crema de leche, crema de coco y Ron", 110],["Crepa de cajeta o lechera","",95],["Canoli","",50]]]
+];
 
 // HORARIO (para el aviso de "Abierto ahora")
 // dias: 0=domingo, 1=lunes, 2=martes, 3=miércoles, 4=jueves, 5=viernes, 6=sábado
